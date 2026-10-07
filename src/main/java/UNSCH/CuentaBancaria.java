@@ -8,17 +8,19 @@ public class CuentaBancaria {
     }
 
     public void depositar(double monto) {
-        saldo += monto;
+        if (monto > 0) {
+            saldo += monto;
+        }
     }
 
     public void retirar(double monto) {
-        if (monto <= saldo) {
+        if (monto > 0 && monto <= saldo) {
             saldo -= monto;
         }
     }
 
     public void transferir(double monto, CuentaBancaria destino) {
-        if (monto <= saldo) {
+        if (monto > 0 && monto <= saldo) {
             this.retirar(monto);
             destino.depositar(monto);
         }
