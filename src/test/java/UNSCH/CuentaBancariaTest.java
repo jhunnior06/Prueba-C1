@@ -29,4 +29,11 @@ public class CuentaBancariaTest {
         assertEquals(100, origen.obtenerSaldo());
         assertEquals(150, destino.obtenerSaldo());
     }
+
+    @Test
+    void retirarConSaldoSuficiente() {
+        CuentaBancaria cuenta = new CuentaBancaria(1000);
+        cuenta.retirar(200);
+        assertEquals(800, cuenta.obtenerSaldo());
+    }
 }
