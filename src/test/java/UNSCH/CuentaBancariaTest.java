@@ -31,9 +31,23 @@ public class CuentaBancariaTest {
     }
 
     @Test
-    void retirarConSaldoSuficiente() {
+    void retirarConSaldoInsuficiente() {
+        CuentaBancaria cuenta = new CuentaBancaria(100);
+        cuenta.retirar(500);
+        assertEquals(100, cuenta.obtenerSaldo());
+    }
+
+    @Test
+    void retirarMontoNegativo() {
         CuentaBancaria cuenta = new CuentaBancaria(1000);
-        cuenta.retirar(200);
-        assertEquals(800, cuenta.obtenerSaldo());
+        cuenta.retirar(-200);
+        assertEquals(1000, cuenta.obtenerSaldo());
+    }
+
+    @Test
+    void depositarMontoValido() {
+        CuentaBancaria cuenta = new CuentaBancaria(1000);
+        cuenta.depositar(500);
+        assertEquals(1500, cuenta.obtenerSaldo());
     }
 }
