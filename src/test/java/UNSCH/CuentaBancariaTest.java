@@ -20,14 +20,14 @@ public class CuentaBancariaTest {
     }
 
     @Test
-    void transferenciaDebeModificarSaldosCorrectamente() {
-        CuentaBancaria origen = new CuentaBancaria(200);
-        CuentaBancaria destino = new CuentaBancaria(50);
+    void transferirDinero() {
+        CuentaBancaria origen = new CuentaBancaria(1000);
+        CuentaBancaria destino = new CuentaBancaria(500);
 
-        origen.transferir(100, destino);
+        origen.transferir(destino, 200);
 
-        assertEquals(100, origen.obtenerSaldo());
-        assertEquals(150, destino.obtenerSaldo());
+        assertEquals(800, origen.obtenerSaldo());
+        assertEquals(700, destino.obtenerSaldo());
     }
 
     @Test
