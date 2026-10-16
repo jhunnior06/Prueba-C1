@@ -19,13 +19,6 @@ public class CuentaBancaria {
         }
     }
 
-    public void transferir(double monto, CuentaBancaria destino) {
-        if (monto > 0 && monto <= saldo) {
-            this.retirar(monto);
-            destino.depositar(monto);
-        }
-    }
-
     public void transferir(CuentaBancaria destino, double monto) {
         if (monto > 0 && monto <= saldo) {
             this.saldo -= monto;
