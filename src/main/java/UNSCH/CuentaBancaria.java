@@ -7,11 +7,15 @@ public class CuentaBancaria {
         this.saldo = saldoInicial;
     }
 
-    public void depositar(double monto) {
-        if (monto > 0) {
-            saldo += monto;
+    public boolean depositar(double monto) {
+        if (monto <= 0) {
+            return false;
         }
+
+        saldo += monto;
+        return true;
     }
+
 
     public void retirar(double monto) {
         if (monto > 0 && monto <= saldo) {

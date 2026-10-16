@@ -1,14 +1,18 @@
 package UNSCH;
 
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CuentaBancariaTest {
 
     @Test
-    void depositoDebeIncrementarSaldo() {
+    void depositoValidoDebeIncrementarSaldo() {
         CuentaBancaria cuenta = new CuentaBancaria(100);
-        cuenta.depositar(50);
+
+        boolean resultado = cuenta.depositar(50);
+
+        assertTrue(resultado);
         assertEquals(150, cuenta.obtenerSaldo());
     }
 
@@ -45,9 +49,22 @@ public class CuentaBancariaTest {
     }
 
     @Test
-    void depositarMontoValido() {
-        CuentaBancaria cuenta = new CuentaBancaria(1000);
-        cuenta.depositar(500);
-        assertEquals(1500, cuenta.obtenerSaldo());
+    void depositoCeroDebeSerRechazado() {
+        CuentaBancaria cuenta = new CuentaBancaria(100);
+
+        boolean resultado = cuenta.depositar(0);
+
+        assertFalse(resultado);
+        assertEquals(100, cuenta.obtenerSaldo());
+    }
+
+    @Test
+    void depositoNegativoDebeSerRechazado() {
+        CuentaBancaria cuenta = new CuentaBancaria(100);
+
+        boolean resultado = cuenta.depositar(-20);
+
+        assertFalse(resultado);
+        assertEquals(100, cuenta.obtenerSaldo());
     }
 }
